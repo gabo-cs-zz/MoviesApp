@@ -112,10 +112,30 @@ main {margin: 0 50px;}
 .mt-r {float:right;margin-right:15px}
 
 #movie-description {
-  height:80px;
-  overflow:hidden;
-  white-space:wrap;
-  text-overflow: ellipsis;
+  overflow: hidden;
+  position: relative; 
+  line-height: 1.2em;
+  max-height: 3.6em; 
+  text-align: justify;
+  margin-right: -1em;
+  padding-right: 1em;
+}
+
+#movie-description:before {
+  content: '...';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#movie-description:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 1em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
 }
 
 .clear {clear:both;}
