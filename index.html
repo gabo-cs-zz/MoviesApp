@@ -52,6 +52,34 @@
         </div>
       </div>
       <section class="movies-section">
+        
+        <!-- {
+        imgUrl: "https://s3.amazonaws.com/palapadata/peliculas/lego-ninjago-la-pelicula.jpg",
+        title: "DC's Legends of tomorrow.",
+        rating: 7.5,
+        duration: "2h 16 min",
+        date: "5 May 2017 (USA)",
+        num_espiodes: 8,
+        genre: "Acción y Aventura",
+        description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. In, quibusdam dolore iste quaerat est rerum nihil sit cupiditate fugit tenetur sequi unde, facilis obcaecati necessitatibus corporis accusamus a beatae quasi."
+      }-->
+        
+        <div class="movie-card" ng-repeat="movie in ctrl.movies">
+          <div class="movie-image">
+            <img src="{{ movie.imgUrl }}" alt="movie-picture"/>
+          </div>
+          <div class="movie-text">
+            <p class="mt-l info-text">{{ movie.title }}</p>
+            <p class="mt-r info-text">{{ movie.rating }}</p>
+            <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;">{{ movie.duration }} | {{ movie.date }} | {{ movie.genre }}</p>
+            <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ movie.description }}</p>
+            <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
+            <p class="mt-r"><a class="favs-btn" href=""></a></p>
+            <div class="clear"></div>
+          </div>
+        </div>
+       
+        <!--
         <div class="movie-card">
           <div class="movie-image">
             <img src="https://s3.amazonaws.com/palapadata/peliculas/lego-ninjago-la-pelicula.jpg" alt="movie-picture"/>
@@ -66,7 +94,8 @@
             <div class="clear"></div>
           </div>
         </div>
-         <div class="movie-card">
+         
+        <div class="movie-card">
           <div class="movie-image">
             <img src="https://s3.amazonaws.com/palapadata/peliculas/lego-ninjago-la-pelicula.jpg" alt="movie-picture"/>
           </div>
@@ -78,9 +107,10 @@
             <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
             <p class="mt-r"><a class="favs-btn" href=""></a></p>
             <div class="clear"></div>
-              
           </div>
         </div>
+        -->
+        
       </section>
       
     </main>
