@@ -34,7 +34,7 @@
     </header>
     
     <main ng-controller="app-controller as ctrl">
-      <p class="info-text">Descubra nuevas películas y programas de televisión</p>
+      <p class="info-text" style="margin-top: 40px;">Descubra nuevas películas y programas de televisión</p>
       
       <div id="dropdowns">
         <div id="year-dropdown-wrap">
@@ -46,8 +46,7 @@
         <div id="genre-dropdown-wrap">
           <p>Género</p>
           <select id="genre-dropdown" >
-             <div class="hey"><option value="" >Hey</option></div>
-            <!-- <option value="" disabled selected>Filtrar por...</option> -->
+            <option value="" disabled selected>Filtrar por...</option>
             <option ng-repeat="year in ctrl.genres" value="{{ genre }}">{{ year }}</option>
           </select>
         </div>
@@ -58,12 +57,12 @@
             <img src="https://s3.amazonaws.com/palapadata/peliculas/lego-ninjago-la-pelicula.jpg" alt="movie-picture" style="width: 11.6em;" />
           </div>
           <div id="movie-text">
-            <p class="mt-l">DC's Legends of tomorrow</p>
-            <p class="mt-r">7.5</p>
-            <p class="mt-l"> 2h 16min | Temporadas 8 | Episodios 47</p>
-            <p id="movie-description" class="mt-l block-with-text"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. um fuga placeat numquam eius praesentium voluptates obcaecati blanditiis!</p>
-            <p class="mt-l"> Trailer </p>
-            <p class="mt-r">Add</p>
+            <p class="mt-l info-text">DC's Legends of tomorrow</p>
+            <p class="mt-r info-text" >7.5</p>
+            <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> 2h 16min | Temporadas 8 | Episodios 47</p>
+            <p id="movie-description" class="mt-l block-with-text" style="color:rgba(0,0,0, .6);"> Lorem ipsum dolor sit amet, consectetur adipisicing elit. um fuga placeat numquam eius praesentium voluptates obcaecati blanditiis!</p>
+            <p class="mt-l" style="width: 10em;"> Trailer </p>
+            <p class="mt-r">Agregar a favoritos <img src="assets/img/heart_icon.png" ></img> </p>
             <div class="clear"></div>
           </div>
         </div>
