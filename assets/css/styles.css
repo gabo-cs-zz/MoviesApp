@@ -30,9 +30,7 @@ main {margin: 0 50px;}
   border-bottom: 3px solid #0abffe;
 }
 
-.navbar .icon {
-  display: none;
-}
+.navbar .icon {display: none;}
 
 .navbar a:hover {
   background-color: #fff;
@@ -52,9 +50,7 @@ main {margin: 0 50px;}
   padding: 12px 20px 12px 115px;
 }
 
-#form-search-bar {
-  /*margin-bottom: 60px;*/
-}
+#form-search-bar { margin: 0 -3em; }
 
 .info-text {color:#9fb0b7;font-weight:bold;}
 
@@ -79,11 +75,6 @@ main {margin: 0 50px;}
 #year-dropdown {padding: 0 3em 0 .5em;}
 
 #genre-dropdown {padding: 0 7em 0 .5em;}
-
-#genre-dropdown option li {
-  font-size: 1.1em;
-  margin-top: 5em;
-}
 
 .movie-card {
   width: 47%;
@@ -177,7 +168,7 @@ main {margin: 0 50px;}
   .favs-btn {background-size: 1.2em 1.2em; padding: 1px 2em 2px 2px;}
 }
 
-@media screen and (max-width: 1110px) {
+@media screen and (max-width: 1125px) {
   .movie-card {
     font-size: 100%;
     width: 100%;
@@ -205,9 +196,7 @@ main {margin: 0 50px;}
     display: block;
     height: 1em;
   }
-  .navbar a.icon:hover {
-   background-color:#fff;
-  }
+  .navbar a.icon:hover { background-color:#fff; }
   
   #home {width: 160px;}
   .mt-l {width: 43%;}
@@ -230,10 +219,11 @@ main {margin: 0 50px;}
     right: 0;
     top: 0;
   }
+  
   .navbar.responsive a {
     float: none;
-    display: block;
     text-align: left;
+    display: block;
   }
   
   #year-dropdown, #genre-dropdown {
@@ -242,11 +232,7 @@ main {margin: 0 50px;}
   }
 }
 
-@media screen and (max-width: 515px) {
-   .mt-l {width: 33%;}
-}
-
-@media screen and (max-width: 456px) {
+@media screen and (max-width: 520px) {
   .navbar {padding: 0;}
   
   #home {width: 120px;}
@@ -255,6 +241,12 @@ main {margin: 0 50px;}
     font-size: .8em;
     background-position: 15px 10px; 
     padding: 12px 20px 12px 40px;
+  }
+  
+  #year-dropdown-wrap {margin-right: 4em;}
+  
+  #dropdowns {
+    font-size: 84%;
   }
   
   .movie-card {
@@ -284,7 +276,7 @@ main {margin: 0 50px;}
     right: .5em;
   }
   
-  #home { width: 100px; }
+  #home { width: 86px; }
   
   #input-search {
     font-size: .8em;
