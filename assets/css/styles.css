@@ -95,23 +95,25 @@ main {margin: 0 50px;}
   margin-right: 2em;
 }
 
-#movie-image {
+.movie-image {
   float: left;
   clear: left;
   margin-right: 8px;
 }
 
+.movie-image img {width: 11.6em;}
+
 /*movie-text-left*/
 .mt-l {
   float: left;
   margin-left:10px;
-  width: 20em;
+  width: 55%;
 }
 
 /*movie-text-right*/
 .mt-r {float:right;margin-right:15px}
 
-#movie-description {
+.movie-description {
   overflow: hidden;
   position: relative; 
   line-height: 1.2em;
@@ -121,26 +123,79 @@ main {margin: 0 50px;}
   padding-right: 1em;
 }
 
-#movie-description:before {
+.movie-description:before {
   content: '...';
   position: absolute;
   right: 0;
   bottom: 0;
 }
 
-#movie-description:after {
+.movie-description:after {
   content: '';
   position: absolute;
   right: 0;
   width: 1em;
   height: 1em;
   margin-top: 0.2em;
-  background: white;
+}
+
+.trailer-btn {
+  color: rgb(10, 191, 254);
+  padding: 6% 12%;
+  text-decoration: none;
+  border: 2px solid rgba(10, 191, 254, .7);
+  border-radius: 5px;
+}
+
+.trailer-btn:before {
+    content: "Ver Trailer";
+}
+
+.favs-btn {
+  color:#9fb0b7;
+  text-decoration: none;
+  background-image: url(/assets/img/heart_icon.png);
+  background-size: 1.3em 1.3em;
+  background-position: 140px; 
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  padding: 1px 1.5em 2px 2px;
+}
+
+.favs-btn:before {
+  content: "Agregar a favoritos";
 }
 
 .clear {clear:both;}
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 1306px) {
+  .movie-card {font-size: 95%;width: 45%;}
+  .mt-l {width: 45%;}
+  .trailer-btn {padding: 6% 5%;}
+  .favs-btn {background-size: 1.2em 1.2em; padding: 1px 2em 2px 2px;}
+}
+
+@media screen and (max-width: 1110px) {
+  .movie-card {
+    font-size: 100%;
+    width: 100%;
+    height: 17.2em;
+    margin-right: 0;
+    margin-bottom: 1.5em;
+  }
+  .mt-l {width: 61%;}
+  .trailer-btn {padding: 6% 15%;}
+}
+
+@media screen and (max-width: 740px) {
+  .movie-card {
+    font-size: 95%;
+  }
+  .mt-l {width: 50%;}
+  .trailer-btn {padding: 6% 8%;}
+}
+
+@media screen and (max-width: 621px) {
   .navbar a:not(:first-child) {
     display: none;
   }
@@ -153,12 +208,17 @@ main {margin: 0 50px;}
    background-color:#fff;
   }
   
-  #home {
-    width: 160px;
+  #home {width: 160px;}
+  .mt-l {width: 42%;}
+  .trailer-btn:before {content: "Trailer";}
+  .favs-btn {
+    background-position: 10px; 
+    padding: 1px 2em 2px 2px;
   }
+  .favs-btn:before {content: "";}
 }
 
-@media screen and (max-width: 600px) { 
+@media screen and (max-width: 621px) { 
   .navbar {
     padding: 0;
   }
@@ -179,22 +239,57 @@ main {margin: 0 50px;}
     height: 1.5em;
     padding: 0 1em 0 .2em;
   }
+  
+  
 }
 
-@media screen and (max-width: 400px) {
-  .navbar {
-    padding: 0;
-  }
+@media screen and (max-width: 515px) {
+   .mt-l {width: 32%;}
+}
+
+@media screen and (max-width: 456px) {
+  .navbar {padding: 0;}
   
-  #home {
-    width: 120px;
-  }
+  #home {width: 120px;}
   
   #input-search {
     font-size: .8em;
     background-position: 15px 10px; 
     padding: 12px 20px 12px 40px;
   }
+  
+  .movie-card {
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    /*clear: both;*/
+  }
+  
+  .movie-image img {
+    width: 103%;
+    height: 100%;
+  }
+  
+  .mt-l {width:35%;}
+  .trailer-btn {margin: 5% 5% 5% 10%;}
+  
+  .movie-description {
+}
+  
+.movie-description:before {
+white-space: nowrap;
+    text-indent: 100%;
+    overflow:hidden;
+}
+
+.movie-description:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  width: 6em;
+  height: 1em;
+  margin-top: 0.2em;
+  background: white;
 }
 
 @media screen and (max-width: 273px) {
