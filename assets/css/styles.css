@@ -56,7 +56,7 @@ main {margin: 0 50px;}
   /*margin-bottom: 60px;*/
 }
 
-.info-text {margin-top: 40px;}
+.info-text {margin-top: 40px; color:#9fb0b7;font-weight:bold;}
 
 #dropdowns {margin-bottom: 40px;}
 
@@ -90,16 +90,35 @@ main {margin: 0 50px;}
   height: 17.2em;
   border: 1px solid rgba(136, 136, 136, .4);
   box-shadow: 1px 1px 2px rgba(136, 136, 136, .7);
-  overflow: scroll;
+  overflow: hidden;
   display:inline-block;
   margin-right: 2em;
 }
 
-/*.movie-card img {}*/
-
-#movie-title {
+#movie-image {
   float: left;
+  clear: left;
+  margin-right: 8px;
 }
+
+/*movie-text-left*/
+.mt-l {
+  float: left;
+  margin-left:10px;
+  width: 20em;
+}
+
+/*movie-text-right*/
+.mt-r {float:right;margin-right:15px}
+
+#movie-description {
+  height:80px;
+  overflow:hidden;
+  white-space:wrap;
+  text-overflow: ellipsis;
+}
+
+.clear {clear:both;}
 
 @media screen and (max-width: 600px) {
   .navbar a:not(:first-child) {
