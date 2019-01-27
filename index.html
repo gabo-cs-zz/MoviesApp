@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html ng-app="movies-app" ng-cloak>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+      [ng\:cloak], [ng-cloak], .ng-cloak {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+
+    <header>
+      <nav class="navbar" id="myTopnav">
+        <a id="home" href="#home" class="" style="font-size:1.5em">
+          <img src="assets/img/home_logo.svg" alt="home_loho.svg">
+        </a>
+        <a href="#favs">Favoritos</a>
+        <a href="#series">Series</a>
+        <a href="#movies" class="active">Movies</a>
+        <a href="javascript:void(0);" class="icon" onclick="changeNavResponsive()">
+          <svg width="30" height="25">
+            <path d="M0,5 25,5" stroke="grey" stroke-width="3"/>
+            <path d="M0,13 25,13" stroke="grey" stroke-width="3"/>
+            <path d="M0,21 25,21" stroke="grey" stroke-width="3"/>
+          </svg>
+        </a>
+      </nav>
+      <form id="form-search-bar">
+        <input id="input-search" type="text" name="input-search" placeholder="Search for a movie, series and videos">
+      </form>
+    </header>
+    
+    <main ng-controller="app-controller as ctrl">
+      <p class="info-text">Descubra nuevas películas y programas de televisión</p>
+      
+      <div id="dropdowns">
+        <div id="year-dropdown-wrap">
+          <p>Año</p>
+          <select id="year-dropdown">
+            <option ng-repeat="year in ctrl.years" value="{{ year }}">{{ year }}</option>
+          </select>
+        </div>
+        <div id="genre-dropdown-wrap">
+          <p>Género</p>
+          <select id="genre-dropdown" >
+             <div class="hey"><option value="" >Hey</option></div>
+            <!-- <option value="" disabled selected>Filtrar por...</option> -->
+            <option ng-repeat="year in ctrl.genres" value="{{ genre }}">{{ year }}</option>
+          </select>
+        </div>
+      </div>
+      <section class="movies-section">
+        <div class="movie-card">
+          <div id="movie-image">
+            <img src="https://s3.amazonaws.com/palapadata/peliculas/lego-ninjago-la-pelicula.jpg" alt="movie-picture" style="width: 11.6em;">
+          </div>
+          <div class="movie-info">
+            <span id="movie-title">Cachón</span>
+            <span id="movie-rating">7.5</span>
+          </div>
+        </div>
+         <div class="movie-card">
+          <img src="https://s3.amazonaws.com/palapadata/peliculas/lego-ninjago-la-pelicula.jpg" alt="movie-picture" style="width: 11.6em;">
+        </div>
+      </section>
+      
+    </main>
+   
+    <script>
+      function changeNavResponsive() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "navbar") {
+          x.className += " responsive";
+        } else {
+          x.className = "navbar";
+        }
+      }
+    </script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="assets/js/angular-route.min.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/app_controller.js"></script>
+  </body>
+</html>
