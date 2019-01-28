@@ -154,6 +154,7 @@ main {margin: 0 50px;}
   background-repeat: no-repeat;
   box-sizing: border-box;
   padding: 1px 1.5em 2px 2px;
+  cursor: pointer;
 }
 
 .favs-btn:before {
@@ -161,6 +162,19 @@ main {margin: 0 50px;}
 }
 
 .clear {clear:both;}
+
+.pagination {
+  padding-left:30%;
+  display: block;
+  margin-bottom: 4em;
+}
+
+.pagination a {
+  color: black;
+  padding: 8px 16px;
+  text-decoration: none;
+  cursor: pointer;
+}
 
 @media screen and (max-width: 1306px) {
   .movie-card {font-size: 95%;width: 45%;}
@@ -265,7 +279,8 @@ main {margin: 0 50px;}
   
   .mt-l {width:77%;}
   .trailer-btn {margin: 0 0 0 10%;}
-  }
+  .pagination { padding-left:0}
+}
 
 @media screen and (max-width: 320px) {
   .navbar { padding: 0; }
