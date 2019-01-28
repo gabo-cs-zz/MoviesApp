@@ -12,15 +12,15 @@
     </style>
   </head>
   <body>
-
+    <a class="active" style="display:none;"></a>
     <header>
       <nav class="navbar" id="navigation-bar">
-        <a id="home" href="#home" class="" style="font-size:1.5em">
+        <a id="home" class="" style="font-size:1.5em; pointer-events:none;">
           <img src="assets/img/home_logo.svg" alt="home_loho.svg">
         </a>
         <a href="#!favs">Favoritos</a>
         <a href="#!series">Series</a>
-        <a href="#!movies" class="active">Movies</a>
+        <a href="#!movies">Movies</a>
         <a href="javascript:void(0);" class="icon" onclick="changeNavResponsive()">
           <svg width="30" height="25">
             <path d="M0,5 25,5" stroke="grey" stroke-width="3"/>
@@ -43,9 +43,19 @@
           navbar.className += " responsive";
         } else { navbar.className = "navbar"; }
       }
+      
+      var items = document.getElementsByTagName("a");
+      for (var i = 2; i < items.length - 1; i++) {
+        items[i].addEventListener("click", function() {
+          var current = document.getElementsByClassName("active");
+          current[0].className = current[0].className.replace("active", "");
+          this.className += " active";
+        });
+      }
     </script>
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.7.1/angular-local-storage.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/app_controller.js"></script>
   </body>

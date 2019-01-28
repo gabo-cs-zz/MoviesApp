@@ -1,1 +1,35 @@
-<h1>Favoritosss!!</h1>
+<form id="form-search-bar">
+  <input id="input-search" type="text" name="input-search" placeholder="Search for a movie, series and videos">
+</form>
+<p class="info-text" style="margin-top: 40px;">Estas son tus películas y series favoritas</p>
+      
+<div id="dropdowns">
+  <div id="year-dropdown-wrap">
+    <p>Año</p>
+    <select id="year-dropdown">
+        <option ng-repeat="year in ctrl.years" value="{{ year }}">{{ year }}</option>
+    </select>
+  </div>
+  <div id="genre-dropdown-wrap">
+    <p>Género</p>
+    <select id="genre-dropdown">
+        <option value="" disabled selected>Filtrar por...</option>
+        <option ng-repeat="genre in ctrl.serieGenres" value="{{ genre }}">{{ genre.name }}</option>
+    </select>
+  </div>
+</div>
+
+<div class="movie-card" ng-repeat="fav in ctrl.favs">
+  <div class="movie-image">
+    <img src="{{ctrl.IMGS_PATH}}{{fav.poster_path}}" alt="movie-picture" />
+  </div>
+  <div class="movie-text">
+    <p class="mt-l info-text">{{ fav.title }}</p>
+    <p class="mt-r info-text">{{ fav.vote_average }}</p>
+    <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> Dur | {{ fav.release_date }} | G </p>
+    <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ fav.overview }}</p>
+    <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
+    <p class="mt-r"><a movie-id="{{ fav.id }}" class="favs-btn" ng-click=""></a></p>
+    <div class="clear"></div>
+  </div>
+</div>

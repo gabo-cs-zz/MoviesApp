@@ -1,7 +1,6 @@
 <form id="form-search-bar">
   <input id="input-search" type="text" name="input-search" placeholder="Search for a movie, series and videos">
 </form>
-<p>SERIEESS</p>
 <p class="info-text" style="margin-top: 40px;">Descubra nuevas películas y programas de televisión</p>
       
 <div id="dropdowns">
@@ -20,7 +19,7 @@
   </div>
 </div>
 
-<div class="movie-card" ng-repeat="movie in ctrl.movies">
+<div class="movie-card" ng-repeat="movie in ctrl.series">
   <div class="movie-image">
     <img src="{{ movie.imgUrl }}" alt="movie-picture" />
   </div>
@@ -30,7 +29,7 @@
     <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;">{{ movie.duration }} | {{ movie.date }} | {{ movie.genre }}</p>
     <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ movie.description }}</p>
     <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
-    <p class="mt-r"><a class="favs-btn" href=""></a></p>
+    <p class="mt-r"><a movie-id="{{ movie.id }}" class="favs-btn" href=""></a></p>
     <div class="clear"></div>
   </div>
 </div>

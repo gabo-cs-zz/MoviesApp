@@ -2,8 +2,6 @@
   <input id="input-search" ng-keypress="ctrl.enterPressed($event)" type="text" name="input-search" placeholder="Search for a movie, series and videos">
   </form>
 
-<p>MOVIEESS</p>
-
 <p class="info-text" style="margin-top: 40px;">Descubra nuevas películas y programas de televisión</p>
       
 <div id="dropdowns">
@@ -24,7 +22,7 @@
 
 <div class="movie-card" ng-repeat="movie in ctrl.movies">
   <div class="movie-image">
-    <img src={{ctrl.IMGS_PATH}}{{movie.poster_path}} alt="movie-picture" />
+    <img src="{{ctrl.IMGS_PATH}}{{movie.poster_path}}" alt="movie-picture" />
   </div>
   <div class="movie-text">
     <p class="mt-l info-text">{{ movie.title }}</p>
@@ -32,7 +30,7 @@
     <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> Dur | {{ movie.release_date }} | G </p>
     <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ movie.overview }}</p>
     <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
-    <p class="mt-r"><a class="favs-btn" href=""></a></p>
+    <p class="mt-r"><a movie-id="{{ movie.id }}" class="favs-btn" ng-click="ctrl.addFav($event)"></a></p>
     <div class="clear"></div>
   </div>
 </div>

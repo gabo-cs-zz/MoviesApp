@@ -2,9 +2,8 @@
   'use strict';
   
   angular
-    .module('movies-app', ['ngRoute'])
+    .module('movies-app', ['ngRoute', 'LocalStorageModule'])
     .config(['$routeProvider', function($routeProvider){
-      
       $routeProvider
         .when('/', {
         templateUrl: 'views/movies.html'
@@ -15,8 +14,12 @@
       }).when('/favs', {
         templateUrl: 'views/favs.html'
       }).otherwise({
-        redirectTo: '/'
+        redirectTo: '/movies'
       });
-    
-  }])
+    }])
+    .config(function (localStorageServiceProvider) {
+      localStorageServiceProvider
+      .setPrefix('movies-app');
+    });
+  
 })();
