@@ -8,37 +8,35 @@
   function ctrl1($http, localStorageService){
     /*jshint validthis: true*/
     var vm = this;
-    vm.moviesToLoad = false;
+    vm.sw = true;
     vm.years = [2010, 2011, 2012, 2013, 2014, 2015];
     vm.movieGenres = [];
     vm.serieGenres = [];
     vm.movies = [];
+    vm.series = [];
+    vm.IMGS_PATH = 'http://image.tmdb.org/t/p/w500';
     vm.favs = [];
-    vm.prev = prev;
-    vm.next = next;
-    vm.deleteFavs = deleteFavs;
-    
+    vm.tempQuery = '';
+    vm.total_pages_tv = 0;
     vm.total_pages = 0;
+    vm.page_tv = 1;
     vm.page = 1;
-
-   
     
     var URL = 'https://api.themoviedb.org/3/';
-    /*var SEARCH = 'genre/movie/list';*/
     var API_KEY = '?api_key=a1fd368308e42e448fe27b98fc6989ef';
     var LANG = "&language=";
     var QUERY = "&query=";
     var PAGE = "&page=";
-    vm.IMGS_PATH = 'http://image.tmdb.org/t/p/w500';
+    
     vm.getMoviesGenres = getMovieGenres();
     vm.getSerieGenres = getSerieGenres();
     vm.enterPressed = enterPressed;
+    vm.enterPressedTv = enterPressedTv;
     vm.addFav = addFav;
     vm.fetchFavs = fetchFavs();
-    vm.tempQuery = '';
-    /*$scope.SITE_PATH="http://image.tmdb.org/t/p/w500/"
-    $scope.title = 'search ctrl';
-    $scope.moviesLoaded=false;*/
+    vm.prev = prev;
+    vm.next = next;
+    vm.deleteFavs = deleteFavs;
       
 
     function getMovieGenres() {
@@ -64,11 +62,20 @@
     } 
     
     function enterPressed(keyEvent) {
-      var input = document.getElementById('input-search');
+      var input = document.getElementById('input-mov');
       if (keyEvent.which === 13){
         vm.tempQuery = input.value;
         console.log("Clicked")
-        getMovies('search/movie', vm.tempQuery, vm.page);
+        getMovies('search/movie', vm.tempQuery, vm.page_tv);
+        input.blur();
+      }
+    }
+    
+    function enterPressedTv(keyEvent) {
+      var input = document.getElementById('input-tv');
+      if (keyEvent.which === 13){
+        vm.tempQuery = input.value;
+        getMovies('search/tv', vm.tempQuery, vm.page);
         input.blur();
       }
     }
@@ -77,9 +84,15 @@
       var promise = $http.get(URL + search + API_KEY + QUERY + query + PAGE + page);
       promise.then(successCallback, failureCallback)
       function successCallback(result) {
-        vm.movies = result.data.results;
-        console.log(result)
-        vm.total_pages = result.data.total_pages;
+        if(search.endsWith('movie')) {
+          vm.movies = result.data.results;
+          vm.total_pages = result.data.total_pages;
+        }
+        if(search.endsWith('tv')){
+          vm.series = result.data.results;
+          vm.total_pages_tv = result.data.total_pages;
+          console.log(vm.series);
+        } 
       }
       function failureCallback(result) {
         alert("Debe ingresar una búsqueda correcta!")
@@ -87,19 +100,39 @@
       }
     }
     
-   function next() {
-     if (vm.page != vm.total_pages)
-       getMovies('search/movie', vm.tempQuery, ++vm.page);
-    }
-    function prev() {
-      if (vm.page - 1 > 0)
-        getMovies('search/movie', vm.tempQuery, --vm.page);
+   function next(val) {
+     switch(val){
+       case 0:
+         if (vm.page != vm.total_pages){
+           getMovies('search/movie', vm.tempQuery, ++vm.page);
+         }
+         break;
+      case 1:
+         if (vm.page_tv != vm.total_pages){
+           getMovies('search/tv', vm.tempQuery, ++vm.page_tv);
+         }
+         break;
+      }
     }
     
-    function addFav(event){
+    function prev(val) {
+      switch(val){
+       case 0:
+         if (vm.page - 1 > 0){
+            getMovies('search/movie', vm.tempQuery, --vm.page);
+         }
+         break;
+      case 1:
+         if (vm.page_tv - 1 > 0){
+           getMovies('search/tv', vm.tempQuery, --vm.page_tv);
+         }
+         break;
+      }
+    }
+    
+    function addFav(event, search) {
       var movie_id = event.target.attributes[0].value;
-      //console.log(movie_id)
-      $http.get(URL + 'movie/' + movie_id + API_KEY)
+      $http.get(URL + search + movie_id + API_KEY)
       .then(function(res){
         if (localStorageService.keys().includes(movie_id)){
           console.log("Can't. Already Fav");
@@ -107,15 +140,8 @@
           console.log("New Fav");
           localStorageService.set(movie_id, res.data);
           fetchFavs();
-          //vm.favs.push(localStorageService.get(movie_id));
         }
       }, function(err){ console.log("Error", err) });
-      // To add to local storage
-      //
-      // Read that value back
-      //var value = localStorageService.get('localStorageKey');
-      //console.log(value);
-      
     }
     
     function fetchFavs(){
@@ -128,6 +154,7 @@
     
     function deleteFavs(){
       localStorageService.clearAll();
+      fetchFavs();
     }
     
   

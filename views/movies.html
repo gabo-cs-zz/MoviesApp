@@ -1,5 +1,5 @@
 <form id="form-search-bar">
-  <input id="input-search" ng-keypress="ctrl.enterPressed($event)" type="text" name="input-search" placeholder="Search for a movie, series and videos">
+  <input class="input-search" id="input-mov" ng-keypress="ctrl.enterPressed($event)" type="text" name="input-search" placeholder="Search for a movie, series and videos">
   </form>
 
 <p class="info-text" style="margin-top: 40px;">Descubra nuevas películas y programas de televisión</p>
@@ -30,7 +30,7 @@
     <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> Dur | {{ movie.release_date }} | G </p>
     <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ movie.overview }}</p>
     <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
-    <p class="mt-r"><a movie-id="{{ movie.id }}" class="favs-btn" ng-click="ctrl.addFav($event)"></a></p>
+    <p class="mt-r"><a movie-id="{{ movie.id }}" class="favs-btn" ng-click="ctrl.addFav($event, 'movie/')"></a></p>
     <div class="clear"></div>
   </div>
   <div>
@@ -38,8 +38,8 @@
 </div>
 
 <div class="pagination">
-  <a ng-click="ctrl.prev()">&laquo;</a>
+  <a ng-click="ctrl.prev(0)">&laquo;</a>
   <a>{{ ctrl.page }}</a>
-  <a ng-click="ctrl.next()">&raquo;</a>
+  <a ng-click="ctrl.next(0)">&raquo;</a>
   <a href="">{{ctrl.total_pages}} pages</a>
 </div>

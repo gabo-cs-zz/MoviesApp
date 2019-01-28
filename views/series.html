@@ -1,5 +1,5 @@
 <form id="form-search-bar">
-  <input id="input-search" type="text" name="input-search" placeholder="Search for a movie, series and videos">
+  <input class="input-search" id="input-tv" ng-keypress="ctrl.enterPressedTv($event)" type="text" name="input-search" placeholder="Search for a movie, series and videos">
 </form>
 <p class="info-text" style="margin-top: 40px;">Descubra nuevas películas y programas de televisión</p>
       
@@ -19,17 +19,26 @@
   </div>
 </div>
 
-<div class="movie-card" ng-repeat="movie in ctrl.series">
+<div class="movie-card" ng-repeat="serie in ctrl.series">
   <div class="movie-image">
-    <img src="{{ movie.imgUrl }}" alt="movie-picture" />
+    <img src="{{ctrl.IMGS_PATH}}{{serie.poster_path}}" alt="movie-picture" />
   </div>
   <div class="movie-text">
-    <p class="mt-l info-text">{{ movie.title }}</p>
-    <p class="mt-r info-text">{{ movie.rating }}</p>
-    <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;">{{ movie.duration }} | {{ movie.date }} | {{ movie.genre }}</p>
-    <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ movie.description }}</p>
+    <p class="mt-l info-text">{{ serie.name }}</p>
+    <p class="mt-r info-text">{{ serie.vote_average }}</p>
+    <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> Dur | {{ serie.release_date }} | G </p>
+    <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ serie.overview }}</p>
     <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
-    <p class="mt-r"><a movie-id="{{ movie.id }}" class="favs-btn" href=""></a></p>
+    <p class="mt-r"><a movie-id="{{ serie.id }}" class="favs-btn" ng-click="ctrl.addFav($event, 'tv/')"></a></p>
     <div class="clear"></div>
   </div>
+  <div>
+  </div>
+</div>
+
+<div class="pagination">
+  <a ng-click="ctrl.prev(1)">&laquo;</a>
+  <a>{{ ctrl.page_tv }}</a>
+  <a ng-click="ctrl.next(1)">&raquo;</a>
+  <a href="">{{ctrl.total_pages_tv}} pages</a>
 </div>

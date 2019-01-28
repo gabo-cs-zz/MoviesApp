@@ -38,7 +38,7 @@ main {margin: 0 50px;}
   color: #0abffe;
 }
 
-#input-search {
+.input-search {
   width: 100%;
   box-sizing: border-box;
   border: 2px #ccc;
@@ -252,7 +252,7 @@ main {margin: 0 50px;}
   
   #home {width: 120px;}
   
-  #input-search {
+  .input-search {
     font-size: .8em;
     background-position: 15px 10px; 
     padding: 12px 20px 12px 40px;
@@ -294,7 +294,7 @@ main {margin: 0 50px;}
   
   #home { width: 86px; }
   
-  #input-search {
+  .input-search {
     font-size: .8em;
     background-image: 15px 10px; 
     padding: 12px 20px 12px 40px;
