@@ -37,6 +37,7 @@
 
    <!-- scripts -->
     <script>
+      //Navbar Responsive
       function changeNavResponsive() {
         var navbar = document.getElementById("navigation-bar");
         if (navbar.className === "navbar") {
@@ -44,6 +45,7 @@
         } else { navbar.className = "navbar"; }
       }
       
+      //Class Active Fixed
       var items = document.getElementsByTagName("a");
       for (var i = 2; i < items.length - 1; i++) {
         items[i].addEventListener("click", function() {
@@ -55,7 +57,7 @@
     </script>
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/angular-route.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-local-storage/0.7.1/angular-local-storage.min.js"></script>
+    <script src="assets/js/angular-local-storage.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/app_controller.js"></script>
   </body>

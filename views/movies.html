@@ -1,6 +1,6 @@
 <form id="form-search-bar">
   <input class="input-search" id="input-mov" ng-keypress="ctrl.enterPressed($event)" type="text" name="input-search" placeholder="Search for a movie, series and videos">
-  </form>
+</form>
 
 <p class="info-text" style="margin-top: 40px;">Descubra nuevas películas y programas de televisión</p>
       
@@ -27,7 +27,7 @@
   <div class="movie-text">
     <p class="mt-l info-text">{{ movie.title }}</p>
     <p class="mt-r info-text">{{ movie.vote_average }}</p>
-    <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> Dur | {{ movie.release_date }} | G </p>
+    <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> {{ movie.vote_count }} | {{ movie.release_date }} | {{ movie.popularity }}</p>
     <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ movie.overview }}</p>
     <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
     <p class="mt-r"><a movie-id="{{ movie.id }}" class="favs-btn" ng-click="ctrl.addFav($event, 'movie/')"></a></p>

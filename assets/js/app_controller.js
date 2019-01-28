@@ -27,6 +27,7 @@
     var LANG = "&language=";
     var QUERY = "&query=";
     var PAGE = "&page=";
+    var GENRES = "&with_genres=";
     
     vm.getMoviesGenres = getMovieGenres();
     vm.getSerieGenres = getSerieGenres();
@@ -37,6 +38,7 @@
     vm.prev = prev;
     vm.next = next;
     vm.deleteFavs = deleteFavs;
+    vm.hey = hey;
       
 
     function getMovieGenres() {
@@ -65,7 +67,6 @@
       var input = document.getElementById('input-mov');
       if (keyEvent.which === 13){
         vm.tempQuery = input.value;
-        console.log("Clicked")
         getMovies('search/movie', vm.tempQuery, vm.page_tv);
         input.blur();
       }
@@ -80,13 +81,17 @@
       }
     }
     
-    function getMovies(search, query, page) {
-      var promise = $http.get(URL + search + API_KEY + QUERY + query + PAGE + page);
+    function hey(sw){
+    }
+    
+    function getMovies(search, query, page, genre) {
+      var promise = $http.get(URL + search + API_KEY + QUERY + query + PAGE + page + GENRES + genre);
       promise.then(successCallback, failureCallback)
       function successCallback(result) {
         if(search.endsWith('movie')) {
           vm.movies = result.data.results;
           vm.total_pages = result.data.total_pages;
+          console.log(vm.movies);
         }
         if(search.endsWith('tv')){
           vm.series = result.data.results;
@@ -135,9 +140,9 @@
       $http.get(URL + search + movie_id + API_KEY)
       .then(function(res){
         if (localStorageService.keys().includes(movie_id)){
-          console.log("Can't. Already Fav");
+          //console.log("Can't. Already Fav");
         } else {
-          console.log("New Fav");
+          //console.log("New Fav");
           localStorageService.set(movie_id, res.data);
           fetchFavs();
         }

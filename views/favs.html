@@ -1,5 +1,5 @@
 <form id="form-search-bar">
-  <input id="input-search" type="text" name="input-search" placeholder="Search for a movie, series and videos">
+  <input class="input-search" type="text" name="input-search" placeholder="Search for a movie, series and videos">
 </form>
 <p class="info-text" style="margin-top: 40px;">Estas son tus películas y series favoritas</p>
       
@@ -24,9 +24,9 @@
     <img src="{{ctrl.IMGS_PATH}}{{fav.poster_path}}" alt="movie-picture" />
   </div>
   <div class="movie-text">
-    <p class="mt-l info-text">{{ fav.title }}</p>
+    <p class="mt-l info-text">{{ fav.title || fav.name }}</p>
     <p class="mt-r info-text">{{ fav.vote_average }}</p>
-    <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> Dur | {{ fav.release_date }} | G </p>
+    <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> {{ fav.vote_count }} | {{ fav.release_date || fav.first_air_date }} ( {{ fav.origin_country[0] }} ) | {{ fav.popularity }} </p>
     <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ fav.overview }}</p>
     <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
     <p class="mt-r"><a movie-id="{{ fav.id }}" class="favs-btn" ng-click=""></a></p>
