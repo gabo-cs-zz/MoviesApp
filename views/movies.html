@@ -1,5 +1,5 @@
-<form id="form-search-bar">
-  <input class="input-search" id="input-mov" ng-keypress="ctrl.enterPressed($event)" type="text" name="input-search" placeholder="Search for a movie, series and videos">
+<form id="form-search-bar" ng-submit="ctrl.enterPressed()">
+  <input class="input-search" id="input-mov" ng-model="ctrl.searchValue" type="text" name="input-search" placeholder="Search for a movie, series and videos">
 </form>
 
 <p class="info-text" style="margin-top: 40px;">Descubra nuevas películas y programas de televisión</p>

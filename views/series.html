@@ -1,21 +1,17 @@
-
-<form id="form-search-bar">
-  <input class="input-search" id="input-tv" ng-keypress="ctrl.enterPressedTv($event)" type="text" name="input-search" placeholder="Search for a movie, series and videos">
+<form id="form-search-bar" ng-submit="ctrl.enterPressedTv()">
+  <input class="input-search" id="input-tv" ng-model="ctrl.searchValue" type="text" name="input-search" placeholder="Search for a movie, series and videos">
 </form>
 <p class="info-text" style="margin-top: 40px;">Descubra nuevas películas y programas de televisión</p>
       
 <div id="dropdowns">
   <div id="year-dropdown-wrap">
     <p>Año</p>
-    <select id="year-dropdown">
-        <option ng-repeat="year in ctrl.years" value="{{ year }}">{{ year }}</option>
+    <select id="year-dropdown" ng-options="year as year for year in ctrl.movieYears" ng-model="ctrl.year" ng-change="ctrl.findByYearTv()">
     </select>
   </div>
   <div id="genre-dropdown-wrap">
     <p>Género</p>
-    <select id="genre-dropdown">
-        <option value=""  disabled selected >Filtrar por...</option>
-        <option ng-repeat="genre in ctrl.serieGenres" value="{{ genre }}" ng-click="ctrl.hey()" >{{ genre.name }}</option>
+    <select id="genre-dropdown" ng-options="genre_tv as genre_tv.name for genre_tv in ctrl.serieGenres" ng-model="ctrl.genre_tv" ng-change="ctrl.findByGenreTv()">
     </select>
   </div>
 </div>
@@ -29,11 +25,17 @@
     <p class="mt-r info-text">{{ serie.vote_average }}</p>
     <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> {{ serie.vote_count }} | {{ serie.first_air_date }} | {{ serie.popularity }} </p>
     <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ serie.overview }}</p>
-    <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
+    <p class="mt-l" style="width: 18%;"><label movie-id="{{ serie.id }}" class="trailer-btn" for="mostrar-modal" ng-click="ctrl.getTrailer($event, 'tv/')"></label> </p>
     <p class="mt-r"><a movie-id="{{ serie.id }}" class="favs-btn" ng-click="ctrl.addFav($event, 'tv/')"></a></p>
     <div class="clear"></div>
   </div>
-  <div>
+  <div class="modal">
+    <input type="radio" id="mostrar-modal" name="modal" />
+    <input type="radio" id="cerrar-modal" name="modal" onclick="closeIframe()" />
+    <label for="cerrar-modal">X</label>
+    <div id="modal">
+      <iframe id="iframe-modal" width="560" height="315" ng-src="{{ ctrl.trailerUrl | trusted }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
   </div>
 </div>
 
