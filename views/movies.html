@@ -13,27 +13,36 @@
   </div>
   <div id="genre-dropdown-wrap">
     <p>Género</p>
-    <select id="genre-dropdown">
+    <!-- 
+    <select  onchage="ctrl.getDashboard()" >
         <option value="" disabled selected>Filtrar por...</option>
-        <option ng-repeat="genre in ctrl.movieGenres" value="{{ genre }}">{{ genre.name }}</option>
+        <option ng-repeat="genre in ctrl.movieGenres" value="{{genre.id}}">{{ genre.name }}</option>
+    </select>  -->
+    <select id="genre-dropdown" ng-options="genre as genre.name for genre in ctrl.movieGenres" ng-model="ctrl.genre" ng-change="ctrl.findByGenre()">
     </select>
   </div>
 </div>
 
 <div class="movie-card" ng-repeat="movie in ctrl.movies">
   <div class="movie-image">
-    <img src="{{ctrl.IMGS_PATH}}{{movie.poster_path}}" alt="movie-picture" />
+    <img ng-src="{{ctrl.IMGS_PATH}}{{movie.poster_path}}" alt="movie-picture" />
   </div>
   <div class="movie-text">
     <p class="mt-l info-text">{{ movie.title }}</p>
     <p class="mt-r info-text">{{ movie.vote_average }}</p>
     <p class="mt-l" style="color:rgba(0,0,0, .8); font-size:90%;"> {{ movie.vote_count }} | {{ movie.release_date }} | {{ movie.popularity }}</p>
-    <p class="movie-description mt-l block-with-text" style="display: block;color:rgba(0,0,0, .6);">{{ movie.overview }}</p>
-    <p class="mt-l" style="width: 18%;"> <a class="trailer-btn" href=""></a> </p>
+    <p class="movie-description mt-l" style="display: block;color:rgba(0,0,0, .6);">{{ movie.overview }}</p>
+    <p class="mt-l" style="width: 18%;"> <label movie-id="{{ movie.id }}" class="trailer-btn" for="mostrar-modal" ng-click="ctrl.getTrailer($event, 'movie/')"></label> </p>
     <p class="mt-r"><a movie-id="{{ movie.id }}" class="favs-btn" ng-click="ctrl.addFav($event, 'movie/')"></a></p>
     <div class="clear"></div>
   </div>
-  <div>
+  <div class="modal">
+    <input type="radio" id="mostrar-modal" name="modal" />
+    <input type="radio" id="cerrar-modal" name="modal" onclick="closeIframe()" />
+    <label for="cerrar-modal">X</label>
+    <div id="modal">
+      <iframe id="iframe-modal" width="560" height="315" ng-src="{{ ctrl.trailerUrl | trusted }}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    </div>
   </div>
 </div>
 

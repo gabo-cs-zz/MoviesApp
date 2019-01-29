@@ -20,6 +20,9 @@
     .config(function (localStorageServiceProvider) {
       localStorageServiceProvider
       .setPrefix('movies-app');
-    });
+    })
+    .filter('trusted', ['$sce', function ($sce) {
+      return $sce.trustAsResourceUrl;
+    }]);
   
 })();

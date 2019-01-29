@@ -34,7 +34,7 @@
     <main ng-controller="app-controller as ctrl">
       <section ng-view class="movies-section"></section>
     </main>
-
+    
    <!-- scripts -->
     <script>
       //Navbar Responsive
@@ -54,11 +54,24 @@
           this.className += " active";
         });
       }
+      
+      //Close iFrame
+      function closeIframe() {
+        var closeModal = document.getElementById("cerrar-modal");
+        var divModal = document.getElementById("modal");
+        var iframe = document.getElementById("iframe-modal");
+        if (closeModal.checked === true) {
+          iframe.parentNode.removeChild(iframe);
+          divModal.appendChild(iframe);
+        }
+      }
+      
     </script>
     <script src="assets/js/angular.min.js"></script>
     <script src="assets/js/angular-route.min.js"></script>
     <script src="assets/js/angular-local-storage.min.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="assets/js/app_controller.js"></script>
+    <script src="assets/js/movService.js"></script>
   </body>
 </html>

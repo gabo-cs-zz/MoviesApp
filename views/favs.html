@@ -21,7 +21,7 @@
 
 <div class="movie-card" ng-repeat="fav in ctrl.favs">
   <div class="movie-image">
-    <img src="{{ctrl.IMGS_PATH}}{{fav.poster_path}}" alt="movie-picture" />
+    <img ng-src="{{ctrl.IMGS_PATH}}{{fav.poster_path}}" alt="movie-picture" />
   </div>
   <div class="movie-text">
     <p class="mt-l info-text">{{ fav.title || fav.name }}</p>

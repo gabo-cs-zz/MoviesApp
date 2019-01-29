@@ -22,7 +22,7 @@
 
 <div class="movie-card" ng-repeat="serie in ctrl.series">
   <div class="movie-image">
-    <img src="{{ctrl.IMGS_PATH}}{{serie.poster_path}}" alt="movie-picture" />
+    <img ng-src="{{ctrl.IMGS_PATH}}{{serie.poster_path}}" alt="movie-picture" />
   </div>
   <div class="movie-text">
     <p class="mt-l info-text">{{ serie.name }}</p>
