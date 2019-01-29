@@ -9,7 +9,7 @@
     /*jshint validthis: true*/
     var vm = this;
     vm.IMGS_PATH = 'http://image.tmdb.org/t/p/w500';
-    vm.years = [2010, 2011, 2012, 2013, 2014, 2015];
+    vm.movieYears = movService.years;
     vm.movieGenres = [];
     vm.serieGenres = [];
     vm.movies = [];
@@ -22,6 +22,7 @@
     vm.page = 1;
     vm.trailerUrl = '';
     vm.genre = '';
+    vm.year = 0;
     
     vm.getMoviesGenres = getMovieGenres();
     vm.getSerieGenres = getSerieGenres();
@@ -29,13 +30,14 @@
     vm.enterPressedTv = enterPressedTv;
     vm.addFav = addFav;
     vm.findByGenre = findByGenre;
+    vm.findByYear = findByYear;
     vm.getTrailer = getTrailer;
     vm.fetchFavs = fetchFavs();
     
     vm.prev = prev;
     vm.next = next;
     vm.deleteFavs = deleteFavs;
-
+    
     function getMovieGenres() {
       var promise = $http.get(movService.URL + 'genre/movie/list' + movService.API_KEY);
       promise.then(successCallback, failureCallback)
@@ -77,9 +79,9 @@
         input.blur();
       }
     }
-    
-    function getMovies(query, page, genre='') {
-      var promise = $http.get(movService.URL + movService.globalSearch + movService.API_KEY + movService.QUERY + query + movService.PAGE + page + '&include_video=true' + '&with_genres=' + genre);
+
+    function getMovies(query, page, genre='', year='') {
+      var promise = $http.get(movService.URL + movService.globalSearch + movService.API_KEY + movService.QUERY + query + movService.PAGE + page + '&include_video=true' + '&with_genres=' + genre + '&primary_release_year=' + year);
       promise.then(successCallback, failureCallback)
       function successCallback(result) {
         if(movService.globalSearch.endsWith('movie')) {
@@ -168,9 +170,17 @@
       vm.tempQuery = '';
       movService.globalSearch = 'discover/movie';
       console.log(vm.genre.id);
-      getMovies(vm.tempQuery, vm.page, vm.genre.id);
-      
+      getMovies(vm.tempQuery, vm.page, vm.genre.id, vm.year);
     }
+    
+    function findByYear() {
+      vm.tempQuery = '';
+      movService.globalSearch = 'discover/movie';
+      console.log(vm.year);
+      getMovies(vm.tempQuery, vm.page, vm.genre.id, vm.year);
+    }
+    
+    getMovies('', vm.page);
     
  } //End Controller Function
     

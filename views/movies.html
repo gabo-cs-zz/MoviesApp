@@ -7,17 +7,11 @@
 <div id="dropdowns">
   <div id="year-dropdown-wrap">
     <p>Año</p>
-    <select id="year-dropdown">
-        <option ng-repeat="year in ctrl.years" value="{{ year }}">{{ year }}</option>
+    <select id="year-dropdown" ng-options="year as year for year in ctrl.movieYears" ng-model="ctrl.year" ng-change="ctrl.findByYear()">
     </select>
   </div>
   <div id="genre-dropdown-wrap">
     <p>Género</p>
-    <!-- 
-    <select  onchage="ctrl.getDashboard()" >
-        <option value="" disabled selected>Filtrar por...</option>
-        <option ng-repeat="genre in ctrl.movieGenres" value="{{genre.id}}">{{ genre.name }}</option>
-    </select>  -->
     <select id="genre-dropdown" ng-options="genre as genre.name for genre in ctrl.movieGenres" ng-model="ctrl.genre" ng-change="ctrl.findByGenre()">
     </select>
   </div>
