@@ -117,7 +117,7 @@ main {margin: 0 50px;}
   border: 2px #ccc;
   font-size: 1em;
   background-color: #f3f6f7;
-  background-image: url(/assets/img/search_logo.png);
+  background-image: url(../img/search_logo.png);
   background-size: 1.4em 1.4em;
   background-position: 50px 10px; 
   background-repeat: no-repeat;
@@ -225,7 +225,7 @@ main {margin: 0 50px;}
 .favs-btn {
   color:#9fb0b7;
   text-decoration: none;
-  background-image: url(/assets/img/heart_icon.png);
+  background-image: url(../img/heart_icon.png);
   background-size: 1.3em 1.3em;
   background-position: 140px; 
   background-repeat: no-repeat;
